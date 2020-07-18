@@ -8,8 +8,8 @@ Passenger = pd.read_csv('HK_aircraft_til2020Jun.csv')
 
 #Visualize the data
 plt.figure(figsize=(12.5,4.5))
-plt.plot(Stock_price['Adj Close'], label='CX')
-#plt.plot(Passenger['Total'], label='Total Passenger')
+#plt.plot(Stock_price['Adj Close'], label='CX')
+plt.plot(Passenger['Total'], label='Total Passenger')
 plt.title('Relationship Between Stock Price and Total Number of Passengers')
 plt.xlabel('Time Period')
 plt.ylabel('...')
