@@ -5,11 +5,7 @@
     <list default="true" id="d269c8d6-b3f4-40b0-b50e-2632781ef6b5" name="Default Changelist" comment="" />
 =======
     <list default="true" id="82bab91b-625d-421f-83ec-26be69d0eee0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/PwC-stem-team-headache-.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/effective_reproductive_local.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
 >>>>>>> f57fec5e427ebe5c831949c486bba03dfa425307
@@ -26,6 +22,11 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
