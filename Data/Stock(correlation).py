@@ -1,17 +1,39 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import yfinance as yf
 
 #data
-Stock_price = pd.read_csv('0293.HK copy.csv')
+Stock_price = yf.download('0293.HK', '2000-1-04', '2020-07-03')
 Passenger = pd.read_csv('HK_aircraft_til2020Jun_cleaned2.csv')
 
 #Visualize the data
-plt.figure(figsize=(12.5,4.5))
-plt.plot(Stock_price['Adj Close'], label='CX')
-plt.plot(Passenger['Total_'], label='Total Passenger')
+#plt.figure(figsize=(12.5,4.5))
+#plt.plot(Stock_price['Adj Close'], label='CX')
+#plt.plot(Passenger['Total_'], label='Total Passenger')
+#plt.title('Relationship Between Stock Price and Total Number of Passengers')
+#plt.xlabel('Time Period')
+#plt.ylabel('Adj. Close Price HKD ($)')
+#plt.legend(loc='upper left')
+#plt.show()
+
+fig, ax1 = plt.subplots()
+
+color = 'tab:red'
 plt.title('Relationship Between Stock Price and Total Number of Passengers')
-plt.xlabel('Time Period')
-plt.ylabel('...')
-plt.legend(loc='upper left')
+ax1.set_xlabel('Time Period')
+ax1.set_ylabel('Adj. Close Price HKD ($)', color=color)
+ax1.plot(Stock_price['Adj Close'], color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()
+
+color = 'tab:blue'
+ax2.set_ylabel('Total Number of Passengers', color=color)
+ax2.plot(Passenger['Total_'], color=color)
+ax2.tick_params(axis='y', labelcolor=color)
+
+fig.tight_layout()
 plt.show()
+
+'''Problem: the Passenger data(monthly), Stock_price(daily) '''
