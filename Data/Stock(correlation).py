@@ -37,3 +37,5 @@ fig.tight_layout()
 plt.show()
 
 '''Problem: the Passenger data(monthly), Stock_price(daily) '''
+
+'''Find the correlation by using  np.corrcoef'''
