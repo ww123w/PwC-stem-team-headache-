@@ -12,7 +12,7 @@ o= 1/5.2
 v = 1/18
 
 #Implementation
-def F(x, t, R0=1.6):   # x=state vector, t=time, R0=effective transmission  rate
+def F(x, t, R0=1.6):   # x=state vector, t=time, R0=effective transmission rate
     s,e,i = x
 
     # New exposure of susceptibles
@@ -61,7 +61,8 @@ def plot_paths(paths, labels, times=t_vec):
         ax.plot(times, path, label=label)
 
     ax.legend(loc='upper left')
-
+    plt.xlabel('Number of Days')
+    plt.ylabel('Fraction of Population')
     plt.show()
 
 plot_paths(i_paths, labels)
