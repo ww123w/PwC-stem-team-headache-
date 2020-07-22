@@ -39,5 +39,3 @@ fig.tight_layout()
 plt.show()
 
 
-
-'''Find the correlation by using  np.corrcoef'''

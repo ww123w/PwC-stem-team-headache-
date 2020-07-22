@@ -9,7 +9,7 @@ Confirmed_cases = pd.read_csv('confirmed cases(monthly).csv')
 Confirmed_cases_ = []
 
 #Visualize the data
-"""fig, ax1 = plt.subplots()
+fig, ax1 = plt.subplots()
 
 color = 'tab:red'
 plt.title('Relationship Between No. of Confirmed Cases and Total No. of Passengers')
@@ -26,7 +26,8 @@ ax2.plot(Passenger['Total_'], color=color)
 ax2.tick_params(axis='y', labelcolor=color)
 
 fig.tight_layout()
-plt.show()"""
+plt.show()
+
 for i in range(Passenger['Total_'].size):
     Passenger_.append(Passenger['Total_'][i])
     Confirmed_cases_.append(Confirmed_cases['Number of confirmed cases'][i])
