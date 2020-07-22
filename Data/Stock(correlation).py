@@ -22,7 +22,7 @@ Passenger['Total_'].index = pd.date_range(start='2000-1-01', end='2020-07-01', f
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
-plt.title('Relationship Between Stock Price and Total Number of Passengers')
+plt.title('Relationship Between Stock Price and Total No. of Passengers')
 ax1.set_xlabel('Time Period')
 ax1.set_ylabel('Adj. Close Price HKD ($)', color=color)
 ax1.plot(Stock_price['Adj Close'], color=color)
