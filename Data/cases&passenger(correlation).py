@@ -27,6 +27,8 @@ ax2.tick_params(axis='y', labelcolor=color)
 
 fig.tight_layout()
 plt.show()"""
-print(Passenger_)
-print(Confirmed_cases_)
+for i in range(Passenger['Total_'].size):
+    Passenger_.append(Passenger['Total_'][i])
+    Confirmed_cases_.append(Confirmed_cases['Number of confirmed cases'][i])
+
 print(np.corrcoef(Confirmed_cases_,Passenger_))
