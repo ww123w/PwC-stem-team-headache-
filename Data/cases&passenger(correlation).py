@@ -4,10 +4,12 @@ import matplotlib.pyplot as plt
 
 #Data
 Passenger = pd.read_csv('aircraft.csv')
+Passenger_ = []
 Confirmed_cases = pd.read_csv('confirmed cases(monthly).csv')
+Confirmed_cases_ = []
 
 #Visualize the data
-fig, ax1 = plt.subplots()
+"""fig, ax1 = plt.subplots()
 
 color = 'tab:red'
 plt.title('Relationship Between No. of Confirmed Cases and Total No. of Passengers')
@@ -24,4 +26,7 @@ ax2.plot(Passenger['Total_'], color=color)
 ax2.tick_params(axis='y', labelcolor=color)
 
 fig.tight_layout()
-plt.show()
+plt.show()"""
+print(Passenger_)
+print(Confirmed_cases_)
+print(np.corrcoef(Confirmed_cases_,Passenger_))
