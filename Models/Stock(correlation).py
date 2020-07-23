@@ -6,7 +6,7 @@ import yfinance as yf
 #data
 Stock_price = yf.download('0293.HK', '2000-1-04', '2020-07-03')
 
-Passenger = pd.read_csv('HK_aircraft_til2020Jun_cleaned2.csv')
+Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/HK_aircraft_til2020Jun_cleaned2.csv')
 Passenger['Total_'].index = pd.date_range(start='2000-1-01', end='2020-07-01', freq='M')
 
 #Visualize the data

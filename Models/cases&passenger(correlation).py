@@ -3,9 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Data
-Passenger = pd.read_csv('aircraft.csv')
+Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/aircraft.csv')
 Passenger_ = []
-Confirmed_cases = pd.read_csv('confirmed cases(monthly).csv')
+Confirmed_cases = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/confirmed cases(monthly).csv')
 Confirmed_cases_ = []
 
 #Visualize the data
