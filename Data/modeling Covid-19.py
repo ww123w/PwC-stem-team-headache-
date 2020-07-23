@@ -63,6 +63,7 @@ def plot_paths(paths, labels, times=t_vec):
     ax.legend(loc='upper left')
     plt.xlabel('Number of Days')
     plt.ylabel('Fraction of Population')
+    plt.title('Transmission of Covid19 under Constant Effective Transmission Rates')
     plt.show()
 
 plot_paths(i_paths, labels)
