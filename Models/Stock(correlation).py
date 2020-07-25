@@ -10,15 +10,6 @@ Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headac
 Passenger['Total_'].index = pd.date_range(start='2000-1-01', end='2020-07-01', freq='M')
 
 #Visualize the data
-#plt.figure(figsize=(12.5,4.5))
-#plt.plot(Stock_price['Adj Close'], label='CX')
-#plt.plot(Passenger['Total_'], label='Total Passenger')
-#plt.title('Relationship Between Stock Price and Total Number of Passengers')
-#plt.xlabel('Time Period')
-#plt.ylabel('Adj. Close Price HKD ($)')
-#plt.legend(loc='upper left')
-#plt.show()
-
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
