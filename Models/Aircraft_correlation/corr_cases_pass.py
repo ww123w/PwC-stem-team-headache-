@@ -22,8 +22,8 @@ print(np.corrcoef(Confirmed_cases_,Passenger_))
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
-plt.title('Relationship Between No. of Confirmed Cases and Total No. of Passengers')
-ax1.set_xlabel('Time Period(Monthly)')
+plt.title('Relationship Between No. of Passengers and No. of Confirmed Cases')
+ax1.set_xlabel('2020')
 ax1.set_ylabel('No. of Confirmed Cases', color=color)
 ax1.plot(Confirmed_cases['Number of confirmed cases'], color=color)
 ax1.tick_params(axis='y', labelcolor=color)
@@ -31,6 +31,7 @@ ax1.tick_params(axis='y', labelcolor=color)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
+ax2.set_xticklabels([0,'Jan','Feb','Mar','April','May','Jun'])
 ax2.set_ylabel('Total Number of Passengers', color=color)
 ax2.plot(Passenger['Total_'], color=color)
 ax2.tick_params(axis='y', labelcolor=color)
