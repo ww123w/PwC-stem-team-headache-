@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+import os
 #Data
-Revenue = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/AAHK_revenue.csv')
+
+os.chdir("../../Data")
+Revenue = pd.read_csv('AAHK_revenue.csv')
 Revenue_ = []
-airmail = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/Cargo and Airmail.csv')
+airmail = pd.read_csv('Cargo and Airmail.csv')
 airmail_ = []
 
 #Correlation

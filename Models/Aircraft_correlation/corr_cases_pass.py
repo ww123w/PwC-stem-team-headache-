@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+
 
 #Data
-Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/aircraft.csv')
+os.chdir("../../Data")
+Passenger = pd.read_csv('aircraft.csv')
 Passenger_ = []
-Confirmed_cases = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/confirmed cases(monthly).csv')
+Confirmed_cases = pd.read_csv('confirmed cases(monthly).csv')
 Confirmed_cases_ = []
 
 #Correlation
