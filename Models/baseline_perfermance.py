@@ -20,6 +20,7 @@ def univariate_data(dataset, start_index, end_index, history_size, target_size):
     end_index = len(dataset) - target_size
 
   for i in range(start_index, end_index):
+
     indices = range(i-history_size, i)
     # Reshape data from (history_size,) to (history_size, 1)
     data.append(np.reshape(dataset[indices], (history_size, 1)))
@@ -31,13 +32,11 @@ TRAIN_SPLIT = 12*18
 data_mean = aircraft[:TRAIN_SPLIT].mean()
 data_std = aircraft[:TRAIN_SPLIT].std()
 
-print(data_mean)
-print(data_std)
 #standarization
 aircraft = (aircraft.values - data_mean) / data_std
 
 # Prediction
-past_history = 12
+past_history = 200
 future_target = 0
 x_train, y_train = univariate_data(aircraft, 0, TRAIN_SPLIT, past_history, future_target)
 x_val, y_val = univariate_data(aircraft, TRAIN_SPLIT, None, past_history, future_target)
@@ -69,5 +68,31 @@ def show_plot(plot_data, delta, title):
 def baseline(history):
   return np.mean(history)
 
-show_plot([x_train[0], y_train[0], baseline(x_train[0])], 0, 'Baseline Prediction Example')
-plt.show()
+show_plot([x_train[0], y_train[0], baseline(x_train[0])], 0, 'Baseline Prediction')
+#plt.show()
+
+batch = 256
+buffer_size = 10000
+
+train = tf.data.Dataset.from_tensor_slices((x_train, y_train))
+train = train.cache().shuffle(buffer_size).batch(batch).repeat()
+
+val = tf.data.Dataset.from_tensor_slices((x_val, y_val))
+val = val.batch(batch).repeat()
+
+lstm = tf.keras.models.Sequential([ tf.keras.layers.LSTM(8, input_shape=x_train.shape[-2:]), tf.keras.layers.Dense(1)])
+
+lstm.compile(optimizer='adam', loss='mae')
+
+# prediction test
+for x, y in val.take(1):
+    print(lstm.predict(x).shape)
+
+EVALUATION_INTERVAL = 200
+EPOCHS = 10
+
+lstm.fit(train, epochs=EPOCHS, steps_per_epoch=EVALUATION_INTERVAL, validation_data=val, validation_steps=50)
+
+for x, y in val.take(3):
+  plot = show_plot([x[0].numpy(), y[0].numpy(), lstm.predict(x)[0]], 0, 'LSTM model')
+  plot.show()
