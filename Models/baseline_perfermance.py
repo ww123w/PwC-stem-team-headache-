@@ -6,7 +6,7 @@ import os
 import pandas as pd
 
 # load dataset
-series = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/HK_aircraft_til2020Jun_cleaned2.csv', header=0, parse_dates=[0], index_col=0, squeeze=True)
+series = pd.read_csv('../Data/HK_aircraft_til2020Jun_cleaned2.csv', header=0, parse_dates=[0], index_col=0, squeeze=True)
 aircraft = series['Total_']
 aircraft.index = pd.date_range(start='2000-1-01', end = '2020-07-01', freq='M')
 
