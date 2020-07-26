@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+
+os.chdir("../../Data")
 
 #Data
-Revenue = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/AAHK_revenue.csv')
+Revenue = pd.read_csv('AAHK_revenue.csv')
 Revenue_ = []
-Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/passenger_yearly.csv')
+Passenger = pd.read_csv('passenger_yearly.csv')
 Passenger_ = []
 
 #Correlation

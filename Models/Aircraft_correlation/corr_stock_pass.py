@@ -2,13 +2,16 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
-
+import os
 #data
-Stock_price = yf.download('0293.HK', '2000-1-04', '2020-07-03')
+Stock_price = yf.download('0293.HK', '2000-01-04', '2020-07-03')
 Stock_price_ =[]
+print(Stock_price)
 
-Passenger = pd.read_csv('/Users/william_whf/PycharmProjects/PwC-stem-team-headache-/Data/HK_aircraft_til2020Jun_cleaned2.csv')
+os.chdir("../../Data")
+Passenger = pd.read_csv('HK_aircraft_til2020Jun_cleaned2.csv')
 Passenger['Total_'].index = pd.date_range(start='2000-1-01', end='2020-07-01', freq='M')
+print(Passenger['Total_'])
 Passenger_ = []
 
 #Correlation
@@ -38,5 +41,3 @@ ax2.tick_params(axis='y', labelcolor=color)
 
 fig.tight_layout()
 plt.show()
-
-
