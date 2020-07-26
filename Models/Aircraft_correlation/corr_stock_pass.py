@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 import os
 #data
-Stock_price = yf.download('0293.HK', '2000-01-04', '2020-07-03')
+Stock_price = yf.download('0293.HK', '2000-01-31', '2020-07-03', interval="1mo")
 Stock_price_ =[]
 print(Stock_price)
 
@@ -17,13 +17,19 @@ Passenger_ = []
 #Correlation
 for i in range(Passenger['Total_'].size):
     Passenger_.append(Passenger['Total_'][i])
-    Stock_price_.append(Stock_price['Adj Close'][i])
 
+for i in range((Stock_price['Adj Close'].size)):
+    if not np.isnan(Stock_price['Adj Close'][i]):
+        Stock_price_.append(Stock_price['Adj Close'][i])
+
+print(Stock_price_)
 print(np.corrcoef(Stock_price_,Passenger_))
 
 
 #Visualize the data
 fig, ax1 = plt.subplots()
+
+Stock_price = yf.download('0293.HK', '2000-01-04', '2020-07-03')
 
 color = 'tab:red'
 plt.title('Relationship Between Stock Price and Total No. of Passengers')
