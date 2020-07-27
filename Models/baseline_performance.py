@@ -89,7 +89,7 @@ for x, y in val.take(1):
     print(lstm.predict(x).shape)
 
 EVALUATION_INTERVAL = 200
-EPOCHS = 10
+EPOCHS = 1
 
 lstm.fit(train, epochs=EPOCHS, steps_per_epoch=EVALUATION_INTERVAL, validation_data=val, validation_steps=50)
 
@@ -133,15 +133,15 @@ def multivariate_data(dataset, target, start_index, end_index, history_size,
 
   return np.array(data), np.array(labels)
 
-past_history = 246
+past_history = 12
 future_target = 12
 STEP = 6    #idk
 
-x_train_single, y_train_single = multivariate_data(dataset, dataset[:, 1], 0,   #Error
+x_train_single, y_train_single = multivariate_data(dataset, dataset[:, 0], 0,   #Error
                                                    TRAIN_SPLIT, past_history,
                                                    future_target, STEP,
                                                    single_step=True)
-x_val_single, y_val_single = multivariate_data(dataset, dataset[:, 1],
+x_val_single, y_val_single = multivariate_data(dataset, dataset[:, 0],
                                                TRAIN_SPLIT, None, past_history,
                                                future_target, STEP,
                                                single_step=True)
