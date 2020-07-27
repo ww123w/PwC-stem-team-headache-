@@ -137,7 +137,7 @@ past_history = 12
 future_target = 12
 STEP = 6    #idk
 
-x_train_single, y_train_single = multivariate_data(dataset, dataset[:, 0], 0,   #Error
+x_train_single, y_train_single = multivariate_data(dataset, dataset[:, 0], 0,
                                                    TRAIN_SPLIT, past_history,
                                                    future_target, STEP,
                                                    single_step=True)
