@@ -15,7 +15,7 @@ Stock = []
 
 #using local ### to be correct
 os.chdir("../../Data")
-Passenger = pd.read_csv('HK_aircraft_til2020Jun_cleaned2.csv')
+Passenger = pd.read_csv('aircraft_2000_2020.csv')
 Passenger['Total_'].index = pd.date_range(start='2000-01-01', end = '2020-07-01', freq='M')
 print(Passenger['Total_'])
 Passenger_list = []

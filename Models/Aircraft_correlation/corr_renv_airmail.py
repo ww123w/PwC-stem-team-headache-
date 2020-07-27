@@ -7,7 +7,7 @@ import os
 os.chdir("../../Data")
 Revenue = pd.read_csv('AAHK_revenue.csv')
 Revenue_ = []
-airmail = pd.read_csv('Cargo and Airmail.csv')
+airmail = pd.read_csv('Cargo_and_Airmail.csv')
 airmail_ = []
 
 #Correlation

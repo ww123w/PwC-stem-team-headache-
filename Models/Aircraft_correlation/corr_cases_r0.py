@@ -5,9 +5,9 @@ import os
 
 os.chdir("../../Data")
 
-Cases = pd.read_csv('latest_situation_of_reported_cases_covid_19_eng.csv')
+Cases = pd.read_csv('confirmed_cases_daily.csv')
 Cases_list = []
-Reproduction = pd.read_csv('effective_reproductive_local_2.csv')
+Reproduction = pd.read_csv('reproductive_number.csv')
 Repro_list = []
 
 # 24/01/2020 - 06/07/2020

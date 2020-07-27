@@ -6,9 +6,9 @@ import os
 
 #Data
 os.chdir("../../Data")
-Passenger = pd.read_csv('aircraft.csv')
+Passenger = pd.read_csv('aircraft_2020.csv')
 Passenger_ = []
-Confirmed_cases = pd.read_csv('confirmed cases(monthly).csv')
+Confirmed_cases = pd.read_csv('confirmed_cases_monthly.csv')
 Confirmed_cases_ = []
 
 #Correlation
