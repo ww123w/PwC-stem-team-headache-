@@ -3,21 +3,17 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-
 os.chdir("../Data")
-
-
-data = pd.read_csv("aircraft_2000_2020_predict.csv")
+data = pd.read_csv("aircraft_2000_2020.csv")
 
 data = data.drop(columns = ["Year","Landing", "Take-off", "Total", "Year-on-year \r\n% change", "Arrival", "Departure", "Year-on-year\r\n% change", "Unloaded",
                             "Loaded", "Total.1", "Year-on-year \r\n% change.1"])
-
 # adding two features
 data["month_index"] = data.index + 1
 data["month_index_sqr"] = data["month_index"] ** 2
 
 # Converting months to indicators
-data = pd.get_dummies(data, columns = ["Month"], drop_first = True)
+data = pd.get_dummies(data, columns = ["Month"])
 print(data)
 
 # Partition the data
