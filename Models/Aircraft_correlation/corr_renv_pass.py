@@ -22,7 +22,7 @@ print(np.corrcoef(Revenue_,Passenger_))
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
-plt.title('Relationship Between Revenue of AAHK and No. of Passengers')
+plt.title('Relationship Between No. of Passengers and Revenue of AAHK')
 ax1.set_ylabel('Passenger Traffic(millions of passengers)', color=color)
 ax1.plot(Passenger['total'], color=color)
 ax1.tick_params(axis='y', labelcolor=color)

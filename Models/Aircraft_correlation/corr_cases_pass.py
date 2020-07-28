@@ -31,7 +31,7 @@ ax1.tick_params(axis='y', labelcolor=color)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
-ax2.set_xticklabels([0,'Jan','Feb','Mar','April','May','Jun'])
+ax2.set_xticklabels([0,'Jan','Feb','Mar','April','May','Jun','July','Aug','Sep'])
 ax2.set_ylabel('Total Number of Passengers', color=color)
 ax2.plot(Passenger['Total_'], color=color)
 ax2.tick_params(axis='y', labelcolor=color)
