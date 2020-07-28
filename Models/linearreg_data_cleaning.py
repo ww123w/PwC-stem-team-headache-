@@ -16,8 +16,8 @@ data["month_index"] = data.index + 1
 data["month_index_sqr"] = data["month_index"] ** 2
 
 # Converting months to indicators
-#data = pd.get_dummies(data, columns = ["Month"], drop_first = True)
-#print(data)
+data = pd.get_dummies(data, columns = ["Month"])
+print(data)
 
 # Partition the data
 # 2003 SARS & 2008 Financial crisis -> noise. Therefore, training & validation from 2010-01-01 (index 120) to 2018-12-31 (index 227) (108 months)
