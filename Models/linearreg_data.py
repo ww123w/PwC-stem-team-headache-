@@ -14,9 +14,7 @@ data["month_index_sqr"] = data["month_index"] ** 2
 
 # Converting months to indicators
 data = pd.get_dummies(data, columns = ["Month"])
-data2 = pd.DataFrame(list(range(247,259)), columns=list(["month_index"]))
-
-print(data.append(data2, ignore_index=True))
+print(data)
 
 # Partition the data
 # 2003 SARS & 2008 Financial crisis -> noise. Therefore, training & validation from 2010-01-01 (index 120) to 2018-12-31 (index 227) (108 months)
@@ -28,3 +26,9 @@ valid = data.loc[204:227]
 train_valid = data.loc[120:227]
 
 forecast = data.loc[252:263]
+
+# Taking away output variable
+output_train = train["Total_"]
+train = train.drop(columns = ["Total_"])
+print(output_train)
+print(train)
