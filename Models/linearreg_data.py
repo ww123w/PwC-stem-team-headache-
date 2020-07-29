@@ -60,3 +60,9 @@ output_predict = lrm.predict(valid)
 # Compare
 df = pd.DataFrame({'Actual:': output_valid, 'Predicted': output_predict//1})
 print(df)
+
+# Weighting
+print(est2.params)
+
+plt.plot(output_predict)
+plt.show()
