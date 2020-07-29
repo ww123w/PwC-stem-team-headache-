@@ -2,6 +2,10 @@ import pandas as pd
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import sklearn
+from sklearn.linear_model import LinearRegression
+import statsmodels.tools.tools as sm
+import statsmodels.regression.linear_model as linearModel
 
 os.chdir("../Data")
 data = pd.read_csv("aircraft_2000_2020.csv")
@@ -14,7 +18,7 @@ data["month_index_sqr"] = data["month_index"] ** 2
 
 # Converting months to indicators
 data = pd.get_dummies(data, columns = ["Month"])
-print(data)
+#print(data)
 
 # Partition the data
 # 2003 SARS & 2008 Financial crisis -> noise. Therefore, training & validation from 2010-01-01 (index 120) to 2018-12-31 (index 227) (108 months)
@@ -25,10 +29,27 @@ valid = data.loc[204:227]
 
 train_valid = data.loc[120:227]
 
-forecast = data.loc[252:263]
+#Forecasting as if COVID-19 doesn't exist
+#2019-01-01 (index 228) to 2020-01-01 (index 240)
+forecast = data.loc[228:240]
 
 # Taking away output variable
 output_train = train["Total_"]
 train = train.drop(columns = ["Total_"])
-print(output_train)
-print(train)
+
+output_valid = valid["Total_"]
+valid = valid.drop(columns = ["Total_"])
+
+output_train_valid = train_valid["Total_"]
+train_valid = train_valid.drop(columns = ["Total_"])
+
+lrm = LinearRegression()
+lrm.fit(train, output_train)
+
+# Regression coeffiencient
+X2 = sm.add_constant(train)
+
+#Regression Model
+est = linearModel.OLS(output_train, X2)
+est2 = est.fit()
+print(est2.summary())
