@@ -13,7 +13,7 @@ data = pd.read_csv("aircraft_2000_2020.csv")
 data = data.drop(columns = ["Year","Landing", "Take-off", "Total", "Year-on-year \r\n% change", "Arrival", "Departure", "Year-on-year\r\n% change", "Unloaded",
                             "Loaded", "Total.1", "Year-on-year \r\n% change.1"])
 # adding two features
-data["month_index"] = data.index + 1
+data["month_index"] = data.index + 1 - 120
 data["month_index_sqr"] = data["month_index"] ** 2
 
 # Converting months to indicators
@@ -53,3 +53,10 @@ X2 = sm.add_constant(train)
 est = linearModel.OLS(output_train, X2)
 est2 = est.fit()
 print(est2.summary())
+
+# Input valid data
+output_predict = lrm.predict(valid)
+
+# Compare
+df = pd.DataFrame({'Actual:': output_valid, 'Predicted': output_predict//1})
+print(df)
