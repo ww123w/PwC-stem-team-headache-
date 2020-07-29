@@ -12,7 +12,7 @@ o= 1/5.2
 v = 1/18
 
 #Implementation
-def F(x, t, R0=1.6):   # x=state vector, t=time, R0=effective transmission rate
+def F(x, t, R0=1.6):   # x=state vector, t=time, R0=effective rate
     s,e,i = x
 
     # New exposure of susceptibles
