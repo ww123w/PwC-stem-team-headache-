@@ -11,7 +11,7 @@ aircraft['Total_'].index = pd.date_range(start='2000-1-01', end='2020-07-01', fr
 #plt.show()
 
 # 2003 SARS & 2008 Financial crisis -> noise. Therefore, We take the data from 2010-01-01 (row 120) to 2018-12-31 (row 228) (108 months)
-data_input = aircraft['Total_'][120:240]
+data_input = aircraft['Total_'][:]
 print(data_input)
 
 # Rolling mean & Stationarity test
@@ -25,7 +25,7 @@ def test_stationarity(timeseries):
     mean = plt.plot(rolmean, color='red', label='Rolling Mean')
     std = plt.plot(rolstd, color='black', label='Rolling Std')
     plt.legend(loc='best')
-    plt.title('Rolling Mean & Standard Deviation')
+    plt.title('From Jan 00 to Jun 20' + '\n' + 'Total no. of Passengers Arrival and Departure from Hong Kong' + '\n')
 
     plt.show()
 

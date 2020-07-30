@@ -62,7 +62,22 @@ df = pd.DataFrame({'Actual:': output_valid, 'Predicted': output_predict//1})
 print(df)
 
 # Weighting
-print(est2.params)
+#print(est2.params)
 
-plt.plot(output_predict)
+output_predict = pd.DataFrame(output_predict, index = output_valid.index)
+print(output_predict)
+
+#ploting
+fig, valid = plt.subplots()
+
+plt.title("Validation on prediction model" + '\n')
+valid.set_xlabel('2017-01-01 (index 204) to 2018-12-31 (index 227) (2 yrs)')
+valid.plot(output_valid, color = 'tab:red', label = 'Validation')
+valid.legend()
+
+predict  = valid.twiny()
+predict.plot(output_predict, color = 'tab:green', label = 'Prediction')
+predict.legend()
+
+fig.tight_layout()
 plt.show()
