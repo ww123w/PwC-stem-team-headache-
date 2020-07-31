@@ -40,7 +40,7 @@ def test_stationarity(timeseries):
     mean = plt.plot(rolmean, color='red', label='Rolling Mean')
     std = plt.plot(rolstd, color='black', label='Rolling Std')
     plt.legend(loc='best')
-    plt.title('From Jun 10 to Dec 18' + '\n'
+    plt.title('From Jun 2010 to Dec 2018' + '\n'
               'Rolling Mean & Standard Deviation')
 
     plt.show()

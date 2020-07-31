@@ -1,0 +1,83 @@
+import pandas as pd
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+import sklearn
+from sklearn.linear_model import LinearRegression
+import statsmodels.tools.tools as sm
+import statsmodels.regression.linear_model as linearModel
+
+os.chdir("../Data")
+data = pd.read_csv("aircraft_2000_2020.csv")
+
+data = data.drop(columns = ["Year","Landing", "Take-off", "Total", "Year-on-year \r\n% change", "Arrival", "Departure", "Year-on-year\r\n% change", "Unloaded",
+                            "Loaded", "Total.1", "Year-on-year \r\n% change.1"])
+# adding two features
+data["month_index"] = data.index + 1 - 120
+data["month_index_sqr"] = data["month_index"] ** 2
+
+# Converting months to indicators
+data = pd.get_dummies(data, columns = ["Month"])
+#print(data)
+
+# Partition the data
+# 2003 SARS & 2008 Financial crisis -> noise. Therefore, training & validation from 2010-01-01 (index 120) to 2018-12-31 (index 227) (108 months)
+# Training: 2010-01-01 (index 120) to 2016-12-31 (index 203) (7 years / 84 months)
+train = data.loc[120:203]
+# Validation : 2017-01-01 (index 204) to 2018-12-31 (index 227) (2 years / 24 months)
+valid = data.loc[204:227]
+
+train_valid = data.loc[120:227]
+
+#Forecasting as if COVID-19 doesn't exist
+#2019-01-01 (index 228) to 2020-01-01 (index 240)
+forecast = data.loc[228:240]
+
+# Taking away output variable
+output_train = train["Total_"]
+train = train.drop(columns = ["Total_"])
+
+output_valid = valid["Total_"]
+valid = valid.drop(columns = ["Total_"])
+
+output_train_valid = train_valid["Total_"]
+train_valid = train_valid.drop(columns = ["Total_"])
+
+lrm = LinearRegression()
+lrm.fit(train, output_train)
+
+# Regression coeffiencient
+X2 = sm.add_constant(train)
+
+#Regression Model
+est = linearModel.OLS(output_train, X2)
+est2 = est.fit()
+print(est2.summary())
+
+# Input valid data
+output_predict = lrm.predict(valid)
+
+# Compare
+df = pd.DataFrame({'Actual:': output_valid, 'Predicted': output_predict//1})
+print(df)
+
+# Weighting
+#print(est2.params)
+
+output_predict = pd.DataFrame(output_predict, index = output_valid.index)
+print(output_predict)
+
+#ploting
+fig, valid = plt.subplots()
+
+plt.title("Validation on prediction model" + '\n')
+valid.set_xlabel('2017-01-01 (index 204) to 2018-12-31 (index 227) (2 yrs)')
+valid.plot(output_valid, color = 'tab:red', label = 'Validation')
+valid.legend()
+
+predict  = valid.twiny()
+predict.plot(output_predict, color = 'tab:green', label = 'Prediction')
+predict.legend()
+
+fig.tight_layout()
+plt.show()
